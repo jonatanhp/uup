@@ -1,0 +1,13 @@
+.title{
+    color: red;
+}
+.title a:link {
+    color: red  ;
+  }
+.title a:hover {
+    color:red;
+  }
+  
+.title a:visited {
+    color:red;
+  }

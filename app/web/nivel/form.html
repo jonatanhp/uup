@@ -1,0 +1,37 @@
+{{define "nivel/formPage"}}
+
+{{ template "Header" }}
+{{ template "Menu" }} 
+{{ . }}
+
+<div class="title">
+  {{if .IsEdit }}Update{{else}}Create{{end}} 
+</div>
+ 
+
+<form method="POST">
+  <input type="hidden" name="id" value="{{ .Data.Id }}" />
+  <div class="field">
+    <label class="label">Niveles</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Nom" name="nom" value="{{ .Data.Nom }}" required>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Desc</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Desc" name="desc" value="{{ .Data.Desc }}">
+    </div>
+ 
+  <div class="field is-grouped">
+    <div class="control">
+      <input type="submit" value="Save nivel" class="button is-primary"/>
+    </div>
+    
+  </div>
+
+
+
+</form><br />    
+{{ template "Footer" }}
+{{end}}

@@ -31,9 +31,12 @@ func main() {
 	cfig.DB.AutoMigrate(&models.Empleado{})
 	cfig.DB.AutoMigrate(&models.Alumno{})
 	cfig.DB.AutoMigrate(&models.Matricula{})
+	cfig.DB.AutoMigrate(&models.Nivel{})
+	cfig.DB.AutoMigrate(&models.Grado{})
 	//cfig.DB.Create(&models.Empleado{Name: "Juan", City: "Juliaca"})
 
 	r := mux.NewRouter()
+	
 	r.HandleFunc("/", controllers.Home).Methods("GET")
 
 	r.HandleFunc("/item/index", controllers.ItemList).Methods("GET")
@@ -46,9 +49,17 @@ func main() {
 	r.HandleFunc("/alumno/form", controllers.AlumnoForm).Methods("GET", "POST")
 	r.HandleFunc("/alumno/delete", controllers.AlumnoDel).Methods("GET")
 
-	r.HandleFunc("/matricula/index", controllers.MatriculaList).Methods("GET")
-	r.HandleFunc("/matricula/form", controllers.MatriculaForm).Methods("GET", "POST")
+	r.HandleFunc("/matricula/index",  controllers.MatriculaList).Methods("GET")
+	r.HandleFunc("/matricula/form",   controllers.MatriculaForm).Methods("GET", "POST")
 	r.HandleFunc("/matricula/delete", controllers.MatriculaDel).Methods("GET")
+
+	r.HandleFunc("/nivel/index",  controllers.NivelList).Methods("GET")
+	r.HandleFunc("/nivel/form",   controllers.NivelForm).Methods("GET", "POST")
+	r.HandleFunc("/nivel/delete", controllers.NivelDel).Methods("GET")
+	
+	r.HandleFunc("/grado/index",  controllers.GradoList).Methods("GET")
+	r.HandleFunc("/grado/form",   controllers.GradoForm).Methods("GET", "POST")
+	r.HandleFunc("/grado/delete", controllers.GradoDel).Methods("GET")
 
 	//http.ListenAndServe(":80", r)
 	port := os.Getenv("PORT")

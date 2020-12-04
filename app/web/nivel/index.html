@@ -1,0 +1,43 @@
+{{define "nivel/indexPage"}}
+{{ template "Header" }}
+{{ template "Menu"  }}
+<div class="title">
+  Nivel
+</div>
+
+<div class="table-container">
+  <a href="/nivel/form">NEW nivel</a>
+  <table class="table">
+  <thead>
+  <tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Desc</td>
+    <td>View</td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+   </thead>
+   <tbody>
+  {{ range $i, $d := .Widgets  }}
+    <tr>
+      <td>{{ inc $i }} </td>
+      <td> {{ $d.Nom }} </td>
+      <td>{{ $d.Desc }} </td>
+      <td><a href="../nivel/show?id={{ $d.Id }}">View</a></td>
+      <td><a href="../nivel/form?id={{ $d.Id }}">Edit</a></td>
+      <td><a href="../nivel/delete?id={{ $d.Id }}" onclick="return confirm('Are you sure?');">Delete</a></td>
+    </tr>
+  {{ end }}
+   </tbody>
+  </table>
+</div>
+
+<script>
+  function confirmToDelete(){
+    if(confirm('Are you sure?')) ;
+  }
+</script>
+{{ template "Footer" }}
+{{end}}
+
